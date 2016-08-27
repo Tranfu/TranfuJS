@@ -1,0 +1,7 @@
+
+div[data-page="helloworld"] {
+  color: yellow;
+}
+
+@import '../view/hello';
+@import '../view/world';
