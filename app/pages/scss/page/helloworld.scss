@@ -1,6 +1,9 @@
 
 div[data-page="helloworld"] {
   color: yellow;
+  .p-classname {
+
+  }
 }
 
 @import '../view/hello';

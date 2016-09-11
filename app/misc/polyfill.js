@@ -1,7 +1,7 @@
 const polyfill = {
 
   polyfill() {
-      // this.console();
+      this.console();
       // this.hashchange();
       // this.stringStartsWith();
       this.includes();
@@ -69,9 +69,9 @@ const polyfill = {
     }
   },
 
-  // console() {
-  //   if (!window.console) console = {log: function() {}};
-  // },
+  console() {
+    if (!window.console) console = {log: function() {}};
+  },
   //
   // // router polyfill
   // hashchange() {

@@ -11,7 +11,7 @@ const app = {
           this.cache[key] = new helloworld();
           break;
         default:
-          console.error('## PAGE NOT FOUND');
+          return null;
       }
     }
     return this.cache[key];

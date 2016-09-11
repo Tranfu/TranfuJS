@@ -13,37 +13,52 @@ export default class helloworld extends page {
 
       page: hpage,
 
-      cache: true,
-
-      region: {
+      panels: {
         hello: 'hello', world: 'world',
       },
 
-      view: {
+      views: {
         hello, world
-      }
+      },
+
+      panelviews: {
+        hello: 'hello', world: 'world',
+      },
+
+      events: {
+        'click h2': 'hello',
+        'click [data-panel="world"] img' : 'world',
+      },
+
+      behaviors: ['http'],
     });
   }
 
-  afterset() {
-    super.afterset();
+  http() {
+
+    setTimeout(() => {
+      this.setpage({name: 'helloworld'});
+    }, 3000);
+
+    setTimeout(() => {
+      this.sethelloview({content: 'hello'});
+      this.setworldview({content: 'world'});
+    }, 2000);
   }
 
-  afterdisplay() {
-    super.afterdisplay();
-    this.sethelloview();
-    this.setworldview();
+  sethelloview(data) {
+    this.setview(this.panels.hello, this.views.hello, data);
   }
 
-  addeventlistener() {
-    super.addeventlistener();
+  setworldview(data) {
+    this.setview(this.panels.world, this.views.world, data);
   }
 
-  sethelloview() {
-    this.setview(this.region.hello, this.view.hello, {content:'hello'});
+  hello({currentTarget}) {
+    console.log(currentTarget);
   }
 
-  setworldview() {
-    this.setview(this.region.world, this.view.world, {content:'world'});
+  world({currentTarget}) {
+    console.log(currentTarget);
   }
 }
